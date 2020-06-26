@@ -3,18 +3,11 @@
 {% block title %}Nieuws{% endblock %}
 
 {% block body %}
-    <h1>Nieuws</h1>
+    <h1 class="show-blog">{{ nieuw.titel }}</h1>
 
+    <div class="show-blog">
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ nieuw.id }}</td>
-            </tr>
-            <tr>
-                <th>Titel</th>
-                <td>{{ nieuw.titel }}</td>
-            </tr>
             <tr>
                 <th>Samenvatting</th>
                 <td>{{ nieuw.samenvatting }}</td>
@@ -37,10 +30,17 @@
             </tr>
         </tbody>
     </table>
+    <a href="{{ path('nieuws_index') }}"> Terug</a>
 
-    <a href="{{ path('nieuws_index') }}">back to list</a>
+    {% if app.user %}
 
-    <a href="{{ path('nieuws_edit', {'id': nieuw.id}) }}">edit</a>
+        <a href="{{ path('nieuws_edit', {'id': nieuw.id}) }}">Bewerken</a>
 
     {{ include('nieuws/_delete_form.html.twig') }}
+    {% endif %}
+
+    </div>
+
 {% endblock %}
+
+

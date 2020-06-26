@@ -7,7 +7,13 @@
         <section class="jumbotron text-center">
             <div class="container">
                 <h1>Gameblogs</h1>
-                <p class="lead text-muted">Welkom op GameBlog.nl</p>
+                {% if app.user %}
+                    <div class="lead text-muted">
+                        Welkom {{ app.user.username }},
+                    </div>
+                    {% else %}
+                    <p class="lead text-muted">Welkom gast!</p>
+                {% endif %}
             </div>
         </section>
     </main>

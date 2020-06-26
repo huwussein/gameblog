@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nieuws index{% endblock %}
+{% block title %}Nieuws{% endblock %}
 
 {% block body %}
     <h1>Nieuws index</h1>
@@ -10,11 +10,10 @@
             <tr>
                 <th>Titel</th>
                 <th>Samenvatting</th>
-                <th>Tekst</th>
                 <th>Afbeelding</th>
                 <th>Auteur</th>
                 <th>Datum</th>
-                <th>actions</th>
+                <th>Acties</th>
             </tr>
         </thead>
         <tbody>
@@ -22,13 +21,16 @@
             <tr>
                 <td>{{ nieuw.titel }}</td>
                 <td>{{ nieuw.samenvatting }}</td>
-                <td>{{ nieuw.tekst | raw}}</td>
                 <td><img class="image" src="{{ vich_uploader_asset(nieuw, 'imageFile') }}"  alt="imageName"/></td>
                 <td>{{ nieuw.auteur }}</td>
                 <td>{{ nieuw.datum ? nieuw.datum|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('nieuws_show', {'id': nieuw.id}) }}">show</a>
-                    <a href="{{ path('nieuws_edit', {'id': nieuw.id}) }}">edit</a>
+                    <a href="{{ path('nieuws_show', {'id': nieuw.id}) }}">Meer lezen</a>
+                    <br><br>
+                    {% if app.user %}
+                        <a href="{{ path('nieuws_edit', {'id': nieuw.id}) }}">Bewerken</a>
+                    {% endif %}
+
                 </td>
             </tr>
         {% else %}
@@ -38,6 +40,9 @@
         {% endfor %}
         </tbody>
     </table>
+    {% if app.user %}
 
     <a href="{{ path('nieuws_new') }}">Create new</a>
+{% endif %}
+
 {% endblock %}
