@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1>Gameblogs</h1>
+                <p class="lead text-muted">Welkom op GameBlog.nl</p>
+            </div>
+        </section>
+    </main>
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="my-4">Game Nieuws
+        <small>Nieuws over games enzo</small>
+    </h1>
+
+    <div class="row">
+        {% for nieuw in nieuws %}
+
+        <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <img class="image-home" src="{{ vich_uploader_asset(nieuw, 'imageFile') }}" alt="imageName"/>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <h4 class="card-title">{{ nieuw.titel }}</h4>
+                    </h4>
+                    <p class="card-text">{{ nieuw.samenvatting | raw }}</p>
+                    <div class="btn-group">
+                        <button type="button" onclick="window.location.href='{{ path('nieuws_show', {'id': nieuw.id}) }}'" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" onclick="window.location.href='{{ path('nieuws_edit', {'id': nieuw.id}) }}'" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">{{ nieuw.datum ? nieuw.datum|date('Y-m-d H:i:s') : '' }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+        {% endblock %}

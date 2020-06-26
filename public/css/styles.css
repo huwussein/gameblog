@@ -1,0 +1,13 @@
+.image-home {
+    width: 350px !important;
+    height: 300px !important;
+}
+
+.image {
+    width: 300px !important;
+    height: auto;
+}
+
+.col-md-4{
+    height: auto;
+}

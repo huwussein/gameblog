@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nieuws index{% endblock %}
+
+{% block body %}
+    <h1>Nieuws index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Samenvatting</th>
+                <th>Tekst</th>
+                <th>Afbeelding</th>
+                <th>Auteur</th>
+                <th>Datum</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nieuw in nieuws %}
+            <tr>
+                <td>{{ nieuw.titel }}</td>
+                <td>{{ nieuw.samenvatting }}</td>
+                <td>{{ nieuw.tekst | raw}}</td>
+                <td><img class="image" src="{{ vich_uploader_asset(nieuw, 'imageFile') }}"  alt="imageName"/></td>
+                <td>{{ nieuw.auteur }}</td>
+                <td>{{ nieuw.datum ? nieuw.datum|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('nieuws_show', {'id': nieuw.id}) }}">show</a>
+                    <a href="{{ path('nieuws_edit', {'id': nieuw.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('nieuws_new') }}">Create new</a>
+{% endblock %}

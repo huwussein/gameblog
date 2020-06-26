@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nieuws{% endblock %}
+
+{% block body %}
+    <h1>Nieuws</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nieuw.id }}</td>
+            </tr>
+            <tr>
+                <th>Titel</th>
+                <td>{{ nieuw.titel }}</td>
+            </tr>
+            <tr>
+                <th>Samenvatting</th>
+                <td>{{ nieuw.samenvatting }}</td>
+            </tr>
+            <tr>
+                <th>Tekst</th>
+                <td>{{ nieuw.tekst | raw}}</td>
+            </tr>
+            <tr>
+                <th>Afbeelding</th>
+                <td><img class="image" src="{{ vich_uploader_asset(nieuw, 'imageFile') }}"  alt="imageFile"/></td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ nieuw.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td>{{ nieuw.datum ? nieuw.datum|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('nieuws_index') }}">back to list</a>
+
+    <a href="{{ path('nieuws_edit', {'id': nieuw.id}) }}">edit</a>
+
+    {{ include('nieuws/_delete_form.html.twig') }}
+{% endblock %}
