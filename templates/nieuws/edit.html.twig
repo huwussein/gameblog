@@ -3,11 +3,18 @@
 {% block title %}Edit Nieuws{% endblock %}
 
 {% block body %}
-    <h1>Edit Nieuws</h1>
+    <h1 class="show-blog">Bewerk {{ nieuw.titel }}</h1>
+
+    <div class="show-blog">
+
+    <br>
 
     {{ include('nieuws/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('nieuws_index') }}">back to list</a>
-
+<br>
+    <a class="btn btn-primary" href="{{ path('nieuws_index') }}">Terug</a>
+        <br><br>
     {{ include('nieuws/_delete_form.html.twig') }}
+
+    </div>
+
 {% endblock %}
