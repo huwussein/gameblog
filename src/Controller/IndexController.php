@@ -15,6 +15,6 @@ class IndexController extends AbstractController
     public function index(NieuwsRepository $nieuwsRepository): Response
     {
         return $this->render('index/index.html.twig', [
-            'nieuws' => $nieuwsRepository->findAll(),
+            'nieuws' => $nieuwsRepository->findBy(['homepagina' => true]),
         ]);
     }}

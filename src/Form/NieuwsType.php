@@ -19,6 +19,7 @@ class NieuwsType extends AbstractType
             ->add('samenvatting')
             ->add('tekst', CKEditorType::class, [
                 'config' => ['toolbar' => 'full'],])
+            ->add('homepagina')
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,

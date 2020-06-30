@@ -9,7 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
- * @ORM\Entity(repositoryClass=NieuwsRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\NieuwsRepository", repositoryClass=NieuwsRepository::class)
  * @Vich\Uploadable
  */
 class Nieuws
@@ -83,6 +83,24 @@ class Nieuws
     public function setTekst(string $tekst): self
     {
         $this->tekst = $tekst;
+
+        return $this;
+    }
+
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $homepagina;
+
+    public function getHomepagina(): ?bool
+    {
+        return $this->homepagina;
+    }
+
+    public function setHomepagina(?bool $homepagina): self
+    {
+        $this->homepagina = $homepagina;
 
         return $this;
     }

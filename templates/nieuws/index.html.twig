@@ -14,6 +14,7 @@
                 <th>Afbeelding</th>
                 <th>Auteur</th>
                 <th>Datum</th>
+                <th>Homepagina</th>
                 <th>Acties</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td><img class="image" src="{{ vich_uploader_asset(nieuw, 'imageFile') }}"  alt="imageName"/></td>
                 <td>{{ nieuw.auteur }}</td>
                 <td>{{ nieuw.datum ? nieuw.datum|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ nieuw.homepagina ? 'Ja' : 'Nee' }}</td>
                 <td>
                     <a href="{{ path('nieuws_show', {'id': nieuw.id}) }}">Meer lezen</a>
                     <br><br>
