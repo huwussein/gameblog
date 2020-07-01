@@ -8,7 +8,9 @@ Een simple blog systeem gemaakt in Symfony 5
 - FOSckeditor
 - VichUploader
 
-### Gemaakt door: 
+## Gemaakt door: 
 
 Hussein Al Dawasry
-Dawasry.nl
+
+
+###Dawasry.nl
