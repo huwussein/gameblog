@@ -67,6 +67,8 @@ class NieuwsController extends AbstractController
      */
     public function edit(Request $request, Nieuws $nieuw): Response
     {
+        $nieuw->setDatum(new \DateTime('now'));
+        $nieuw->setAuteur($this->getUser()->getUsername());
         $form = $this->createForm(NieuwsType::class, $nieuw);
         $nieuw->setDatum(new \DateTime('now'));
         $form->handleRequest($request);
